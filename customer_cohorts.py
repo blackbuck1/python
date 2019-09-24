@@ -73,5 +73,8 @@ plt.title('Cohorts: Customers Retention')
 sns.heatmap(user_retention.T,
   cmap = plt.cm.RdYlGn,
   mask = user_retention.T.isnull(), #data will not be shown where it 's True
-  annot = True, #annotate the text on top fmt = '.0%')# string formatting when annot is True
+  annot = True, #annotate the text on top 
+  fmt = '.0%') #string formatting when annot is True
 plt.show()
+
+
