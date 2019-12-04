@@ -11,8 +11,8 @@ query = "SELECT ROW_NUMBER() OVER(ORDER BY month, order_id ASC) AS id, a.* FROM 
 df = pd.read_sql(query, con=con)
 df.head(5)
 
-ndf['rank'] = ndf.groupby('registration_number')['id'].rank(ascending=True)
-fdf = ndf[ndf['rank'] == 1]
+df['rank'] = df.groupby('registration_number')['id'].rank(ascending=True)
+fdf = df[df['rank'] == 1]
 corp_acq_cost = fdf[['order_id', 'month', 'rank']]
 corp_acq_cost['bonus'] = np.where(corp_acq_cost['month'] == 1, 500,2000)
 corp_acq_cost.to_csv('Corporate Truck Acquisition Cost.csv',index=False)
